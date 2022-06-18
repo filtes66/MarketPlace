@@ -1,0 +1,58 @@
+.register__title {
+  margin: 0 0 10px 5px;
+}
+
+.register__wrapper {
+  background-color: darkslategray;
+  display: flex;
+  flex-direction: column;
+  height: 100vh;
+  padding: 10px;
+  position: relative;
+}
+
+.register__form {
+  background-color: #fff;
+  border: 1px solid #000;
+  border-radius: 4px;
+  color: #000;
+  display: flex;
+  flex-direction: column;
+  left: 50%;
+  padding: 10px;
+  position: absolute;
+  top: 50%;
+  transform: translate3d(-50%, -50%, 0);
+}
+
+.register__form-submit {
+  margin-bottom: 10px;
+}
+
+.register__user-name {
+  display: flex;
+  margin-bottom: 15px;
+}
+
+.register__radio {
+  margin-right: 10px;
+}
+
+.register__user-Email {
+  margin-bottom: 15px;
+}
+
+.register__user-gender {
+  display: flex;
+  margin-bottom: 15px;
+}
+
+.register__user-city {
+  display: flex;
+  margin-bottom: 15px;
+}
+
+.register__user-password {
+  display: flex;
+  margin-bottom: 15px;
+}

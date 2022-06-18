@@ -1,0 +1,13 @@
+.photos-arrond__flex {
+  display: flex;
+  flex-wrap: wrap;
+  margin: 60px;
+  position: relative;
+  width: 1400px;
+  gap: 6px;
+}
+
+.galleryArrondissement__gallery-flex {
+  display: flex;
+  flex-wrap: wrap;
+}

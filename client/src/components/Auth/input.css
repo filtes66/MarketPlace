@@ -1,0 +1,32 @@
+.input__label {
+  display: flex;
+  flex-direction: column;
+  margin: 5px;
+  font-family: Verdana, Geneva, Tahoma, sans-serif;
+}
+
+.input__text,
+.input__select {
+  border: 1px solid BLACK;
+  border-radius: 4px;
+  color: #000;
+  font-family: "Open Sans", sans-serif;
+  font-size: 20px;
+  height: 35px;
+  outline: 0;
+  padding: 5px;
+  margin: 5px;
+  width: 200px;
+}
+
+.input__radio {
+  margin-right: 15px;
+}
+
+.input__submit {
+  width: 415px;
+  height: 35px;
+  background-color: royalblue;
+  margin-top: 10px;
+  color: white;
+}

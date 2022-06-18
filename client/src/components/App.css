@@ -1,0 +1,25 @@
+* {
+  margin: 0;
+  padding: 0;
+  vertical-align: baseline;
+}
+
+*,
+::after,
+::before {
+  box-sizing: border-box;
+}
+
+html {
+  /* background-color: #dce1e1;*/
+  font-size: 100%;
+}
+
+body {
+  width: 1400px;
+  margin: 0 auto;
+  font-size: 16px;
+  color: #080808;
+  width: 1400px;
+  font-family: Lato, sans-serif;
+}

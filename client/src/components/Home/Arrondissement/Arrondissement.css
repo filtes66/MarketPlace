@@ -1,0 +1,19 @@
+.arrondissement__wrapper {
+  /*  position: relative;*/
+  display: flex;
+  gap: 10px;
+}
+
+.arrondissement__image {
+}
+
+.arrondissement__numero {
+  bottom: 8px;
+  color: #ffffff;
+  font-size: 30px;
+  left: 16px;
+  position: absolute;
+}
+
+.arrondissement__commentaire {
+}

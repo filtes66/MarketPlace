@@ -1,0 +1,32 @@
+.GalleryArrondissement__titre {
+  text-align: center;
+}
+
+.GalleryArrondissement {
+  padding-top: 30px;
+}
+
+.GalleryArrondissement__arrond {
+  color: #000;
+  display: flex;
+  font-size: 1.5rem;
+  gap: 15px;
+  margin-top: 30px;
+  justify-content: center;
+  list-style-type: none;
+}
+
+.GalleryArrondissement__wrapper {
+  padding: 30px;
+}
+
+.GalleryArrondissement__numero-arrond {
+  border-radius: 3rem;
+}
+
+.GalleryArrondissement--circle {
+  border: 1.5px solid black;
+  border-radius: 1.5rem;
+  width: 2rem;
+  text-align: center;
+}

@@ -1,0 +1,18 @@
+.home {
+  color: "";
+  overflow: hidden;
+}
+
+.home__wrapper {
+  margin: 60px;
+}
+
+.home__grid {
+  display: grid;
+  grid-template-columns: repeat(3, 300px);
+  grid-template-rows: repeat(4, 200px);
+  justify-items: center;
+  margin-top: "";
+  grid-gap: 10px;
+  font-family: Arial, Verdana, Helvetica, sans-serif;
+}
