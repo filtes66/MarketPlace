@@ -1,31 +1,4 @@
-.header {
-  display: flex;
-  justify-content: space-between;
-  list-style-type: none;
-  padding: 0 60px 0 60px;
-}
-
-.header__authentication {
-  margin-right: 5px;
-}
-
-.header__login {
-  margin-right: 5px;
-}
-
-a {
-  text-decoration: none;
-}
-
-.header__titre {
-  background-color: aliceblue;
-  border: 1px solid black;
-  margin: 5px;
-  text-align: center;
-  width: 40px;
-}
-
-.header {
+.header__nav {
   display: flex;
   position: relative;
   justify-content: flex-end;

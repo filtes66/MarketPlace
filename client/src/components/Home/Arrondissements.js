@@ -18,7 +18,7 @@ const Arrondissements = () => {
 
   /** Components */
   const ArrondissementsRender = ({ items }) => {
-    return items.arrayArrond.map((item) =>
+    return items.districtArray.map((item) =>
       item.map(
         ({ id, url, arrond, home, commentaire }) =>
           home && (

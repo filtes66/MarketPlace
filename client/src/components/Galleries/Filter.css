@@ -1,0 +1,39 @@
+.filter__item {
+  align-items: center;
+  background-color: #fff;
+  border: 1px solid #c5d2d2;
+  border-radius: 5px;
+  cursor: pointer;
+  display: flex;
+  gap: 10px;
+  line-height: 20px;
+  margin-right: 8px;
+  padding: 10px 16px;
+  white-space: nowrap;
+}
+
+.filter__items {
+  display: flex;
+  flex-wrap: wrap;
+}
+
+.filter__subList {
+  display: flex;
+  position: relative;
+}
+
+.filter__subList2 {
+  display: flex;
+  width: 1200px;
+  overflow: hidden;
+}
+
+.filter__precedent {
+  position: absolute;
+  left: -20px;
+}
+
+.filter__suivant {
+  position: absolute;
+  left: 1200px;
+}

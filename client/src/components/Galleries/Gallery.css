@@ -1,13 +1,10 @@
-.photos-arrond__flex {
-  display: flex;
-  flex-wrap: wrap;
-  /* margin: 60px;*/
-  position: relative;
-  width: 1400px;
-  gap: 6px;
+.gallery__title {
+  color: #080808;
+  font-size: 0.875rem;
+  font-weight: 400;
+  margin-top: 30px;
 }
 
-.galleryArrondissement__gallery-flex {
-  display: flex;
-  flex-wrap: wrap;
+.header__filters {
+  margin-top: 30px;
 }

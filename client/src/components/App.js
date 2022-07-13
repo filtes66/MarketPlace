@@ -9,7 +9,7 @@ import Home from "./Home/Home";
 //import Login from "./Auth/Login";
 import Login from "./Login/Login";
 import Arrondissements from "./Home/Arrondissements";
-import GalleryArrondissement from "./Galleries/GalleryArrondissement";
+import GalleryDistrict from "./Galleries/GalleryDistrict";
 import GalleryAdministration from "./Galleries/GalleryAdministration";
 import Panier from "./Panier/Panier";
 import Arrondissement from "./Home/Arrondissement/Arrondissement";
@@ -57,12 +57,12 @@ function AppRoutes() {
         exact
         path="/photos-de-l-arrondissement/:arrond"
         element={
-          <LayoutComponent component={GalleryArrondissement} layout={Layout1} />
+          <LayoutComponent component={GalleryDistrict} layout={Layout1} />
         }
       />
       <Route
         exact
-        path="/galerie-bâtiments-administratifs"
+        path="/photos-des-bâtiments-administratifs"
         element={
           <LayoutComponent component={GalleryAdministration} layout={Layout1} />
         }

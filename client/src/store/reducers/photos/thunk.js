@@ -2,15 +2,15 @@ import { createAsyncThunk } from "@reduxjs/toolkit";
 import getPhotos from "../../../services/getPhotos";
 
 const returnPhotosArrays = (items) => {
-  const ArrondissementsArrays = [];
+  const districtsArrays = [];
   const arrayQuart = [];
   const arrayAdmin = [];
   let cond = true;
   for (let i = 1; i <= 20; i++) {
-    let arrayArrond = [];
+    let districtArray = [];
     items.map((item) => {
       if (item.arrond === i) {
-        arrayArrond.push(item);
+        districtArray.push(item);
       }
       if (item.type === 1 && cond) {
         arrayAdmin.push(item);
@@ -20,10 +20,10 @@ const returnPhotosArrays = (items) => {
       }
     });
     cond = false;
-    !!arrayArrond.length && ArrondissementsArrays.push(arrayArrond);
+    !!districtArray.length && districtsArrays.push(districtArray);
   }
   const photosObject = {
-    arrayArrond: ArrondissementsArrays,
+    districtArray: districtsArrays,
     arrayAdmin: arrayAdmin,
     arrayQuart: arrayQuart,
   };

@@ -1,0 +1,16 @@
+.liste-items__item {
+  align-items: center;
+  background-color: #fff;
+  border: 1px solid #c5d2d2;
+  border-radius: 5px;
+  cursor: pointer;
+  display: flex;
+  line-height: 20px;
+  margin-right: 8px;
+  padding: 10px 16px;
+  white-space: nowrap;
+}
+
+.liste-items {
+  display: flex;
+}
