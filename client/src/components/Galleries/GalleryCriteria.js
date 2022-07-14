@@ -1,28 +1,24 @@
 import React, { createRef, forwardRef, useRef, useState } from "react";
 import { Link } from "react-router-dom";
 import { FaSearch, FaChevronLeft, FaChevronRight } from "react-icons/fa";
-import "./Filter.css";
-import SubFilter from "./SubFilter";
+import "./GalleryCriteria.css";
 import { useEffect } from "react";
 
-const Filter = ({ section, onClick, nbSubType }) => {
-  console.log("filter");
+const GalleryCriteria = ({ section, onClick, nbSubType }) => {
   const [currentSlider, setCurrentSlider] = useState(1);
-  const [subFilterSelected, setSubFilterSelected] = useState({ subFilterSelected: false, subType: [] });
+  const [criteria, setCriteria] = useState({ criteriaSelected: false, subCriteria: [] });
   const refSlider = useRef(null);
   const refsItems = useRef([...new Array(nbSubType)].map(() => createRef(null)));
-  console.log("refsitems", refsItems);
 
   useEffect(() => {
-    if (subFilterSelected.subFilterSelected) {
-      console.log("refsitems", refsItems);
+    if (criteria.criteriaSelected) {
       let coord = refsItems.current[2].current.getBoundingClientRect();
       console.log(coord)
     };
-  }, [subFilterSelected.subFilterSelected]);
+  }, [criteria.criteriaSelected]);
   /*
     useEffect(() => {
-      if (subFilterSelected.subFilterSelected) { refSlider.current.style.transform = `translateX(${currentSlider}px)` };
+      if (subFilterSelected.criteriaSelected) { refSlider.current.style.transform = `translateX(${currentSlider}px)` };
     }, [currentSlider]);*/
 
   const FilterItem = forwardRef(({ section, onClick }, ref) => (
@@ -34,22 +30,22 @@ const Filter = ({ section, onClick, nbSubType }) => {
     </li>
   ));
 
-  function onClick(subFilterSelected, subType) {
+  function onClick(criteria, subType) {
     console.log("arrondissements");
-    setSubFilterSelected({
-      ...subFilterSelected,
-      subFilterSelected: true, subType: subType
+    setCriteria({
+      ...criteria,
+      criteriaSelected: true, subType: subType
     });
   }
 
   function renderLeftArrow() {
     setCurrentSlider(currentSlider => currentSlider - 10);
-    if (subFilterSelected.subFilterSelected) { refSlider.current.style.transform = `translateX(${currentSlider}px)` };
+    if (criteria.criteriaSelected) { refSlider.current.style.transform = `translateX(${currentSlider}px)` };
   }
 
   function renderRightArrow() {
     setCurrentSlider(currentSlider => currentSlider + 10);
-    if (subFilterSelected.subFilterSelected) { refSlider.current.style.transform = `translateX(${currentSlider}px)` };
+    if (criteria.criteriaSelected) { refSlider.current.style.transform = `translateX(${currentSlider}px)` };
 
   }
 
@@ -69,7 +65,7 @@ const Filter = ({ section, onClick, nbSubType }) => {
           )
         )}
       </ul>
-      {subFilterSelected.subFilterSelected &&
+      {criteria.criteriaSelected &&
         <div className="filter__subList">
           <button
             className="filter__precedent"
@@ -78,7 +74,7 @@ const Filter = ({ section, onClick, nbSubType }) => {
           </button>
           <ul ref={refSlider} className="filter__subList2">
             {
-              subFilterSelected.subType.map((subSection, i) => (
+              criteria.subType.map((subSection, i) => (
                 <FilterItem key={i} section={subSection} />
               ))}
           </ul>
@@ -93,4 +89,4 @@ const Filter = ({ section, onClick, nbSubType }) => {
   );
 };
 
-export default Filter;
+export default GalleryCriteria;

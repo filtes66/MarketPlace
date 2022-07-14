@@ -1,6 +1,6 @@
 import React, { createRef, useMemo, useRef, useState } from "react";
 import { useParams } from "react-router-dom";
-import Filter from "./Filter";
+import GalleryCriteria from "./GalleryCriteria";
 import GalleryList from "./GalleryList";
 import { createPhotosGrid } from "./utils";
 import "./Gallery.css";
@@ -18,7 +18,7 @@ const Gallery = (props) => {
     [...new Array(props.items.length)].map(() => createRef())
   );
   console.log("refsPhotos ", refsPhotos);
-  const filters = [
+  const criteria = [
     { type: "bâtiments administratifs", subType: undefined },
     { type: "quartiers", subType: undefined },
     {
@@ -51,34 +51,6 @@ const Gallery = (props) => {
     { type: "louvre", subType: undefined },
     { type: "arc de triomphe", subType: undefined },
   ];
-  /* const districtFilter = ["arrondissements"];
-  const districtFilters = [
-    "Ier",
-    "IIe",
-    "IIIe",
-    "IVe",
-    "Ve",
-    "VIe",
-    "VIIe",
-    "VIIIe",
-    "IXe",
-    "Xe",
-    "XIe",
-    "XIIe",
-    "XIIIe",
-    "XIVe",
-    "XVe",
-    "XVI",
-    "XVIIe",
-    "XVIIIe",
-    "XIXe",
-    "XXe",
-  ];
-
-  function onClick() {
-    console.log("arrondissements");
-    setdistrictSelected(true);
-  }*/
 
   function formatDistrict(district) {
     if (district === "1") {
@@ -91,11 +63,9 @@ const Gallery = (props) => {
 
   return (
     <>
-      <section className="header__filters">
-        <Filter section={filters} nbSubType={20} />
-        {/* <Filter section={districtFilter} onClick={onClick} />
-        {districtSelected && <Filter section={districtFilters} />}*/}
-      </section>
+      <div className="header__filters">
+        <GalleryCriteria section={criteria} nbSubType={20} />
+      </div>
       <div className="gallery__title">{title}</div>
       <GalleryList
         createdPhotosGrid={createdPhotosGrid}
