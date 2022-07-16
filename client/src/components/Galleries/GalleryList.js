@@ -4,6 +4,7 @@ import PresentationItem from "./PresentationItem";
 import "./GalleryList.css";
 
 const GalleryList = ({ createdPhotosGrid, refsPhotos }) => {
+  console.log("gallerylist createdphotogrid", createdPhotosGrid);
   const idPrev = useRef(0);
   const [checked, setChecked] = useState([]);
 

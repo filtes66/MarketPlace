@@ -34,7 +34,8 @@ function AppRoutes() {
       <Route
         exact
         path="/"
-        element={<LayoutComponent component={Home} layout={Layout1} />}
+        /*     element={<LayoutComponent component={Home} layout={Layout1} />}*/
+        element={<LayoutComponent component={GalleryDistrict} layout={Layout1} />}
       />
       {/*    <Route
         exact
