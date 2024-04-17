@@ -1,0 +1,12 @@
+.radio {
+  align-items: center;
+  display: flex;
+}
+
+.radio__label {
+  padding: 10px 0;
+}
+
+.radio__radio-button {
+  margin: 0 10px;
+}

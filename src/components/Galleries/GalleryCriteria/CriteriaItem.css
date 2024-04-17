@@ -1,0 +1,21 @@
+.filter__item {
+  align-items: center;
+  background-color: #fff;
+  border: 1px solid #6f43d6;
+  border-radius: 5px;
+  cursor: pointer;
+  display: flex;
+  gap: 10px;
+  line-height: 20px;
+  margin-right: 8px;
+  padding: 10px 16px;
+  white-space: nowrap;
+  color: rgb(111, 67, 214);
+  font-size: 0.875rem;
+  transition: all 0.15s linear;
+}
+
+.filter__item:hover {
+  background-color: #6f43d6;
+  color: #fff;
+}

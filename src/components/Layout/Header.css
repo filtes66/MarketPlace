@@ -1,0 +1,166 @@
+.header__nav {
+  display: flex;
+  position: relative;
+  height: 80px;
+  justify-content: space-between;
+  align-items: center;
+  width: 100%;
+  padding: 10px 0;
+  background-color: #fff;
+  border-bottom: 1px solid #d9d9d9;
+  list-style-type: none;
+}
+
+.header__nav__note {
+  left: 10px;
+  color: #f30a0a;
+  font-weight: 600;
+  font-size: 1rem;
+  position: absolute;
+}
+
+.header__nav__item {
+  margin: 0 10px;
+  font-size: 14px;
+  line-height: 1.1;
+  text-decoration: inherit;
+  color: #080808;
+}
+
+.header__nav__item {
+  color: #6f43d6;
+}
+
+.header__nav__list {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  list-style-type: none;
+}
+
+.header__nav__item .fa-home,
+.header__nav__item .fa-shoppingCart,
+.header__nav__item .fa-images {
+  margin-right: 10px;
+  color: #080808;
+  font-size: 20px;
+}
+
+.header__nav__item .logo {
+  height: 50px;
+  width: 50px;
+}
+
+.menu .fa-times {
+  position: absolute;
+  top: 10px;
+  right: 10px;
+  color: #000;
+  cursor: pointer;
+  font-size: 2Opx;
+}
+
+
+.header__nav__item .fa-home:hover,
+.fa-images:hover {
+  color: #6f43d6;
+}
+
+.header__nav__item a {
+  display: flex;
+  align-items: center;
+  margin-bottom: 10px;
+  color: #080808;
+  text-decoration: none;
+}
+
+.header__nav__item a:hover {
+  color: #6f43d6;
+}
+
+
+.header__nav__item .user {
+  margin-bottom: 10px;
+  color: #333;
+}
+
+.header__nav__item .user .fa-user {
+  margin-right: 10px;
+  color: #333;
+}
+
+.header__nav__item .user button {
+  border: none;
+}
+
+.header__nav__item .user button:hover {
+  cursor: pointer;
+  color: #007BFF;
+}
+
+.header__nav__item .user:hover {
+  cursor: pointer;
+  color: #007BFF;
+}
+
+.header__nav__item .button {
+  border: 1px solid #080808;
+  display: inline-block;
+  padding: 10px 20px;
+  color: #080808;
+  background-color: transparent;
+  border-radius: 5px;
+  text-decoration: none;
+  transition: background-color 0.3s ease;
+}
+
+.header__nav__item .button:hover {
+  background-color: #080808;
+  color: #fff;
+}
+
+.header__gallery {}
+
+.menu {
+  position: fixed;
+  top: 0;
+  right: 0;
+  width: 300px;
+  height: 100vh;
+  background-color: white;
+  padding: 20px;
+  box-sizing: border-box;
+  overflow-y: auto;
+  z-index: 2;
+}
+
+.menu .fa-times {
+  position: absolute;
+  top: 10px;
+  right: 10px;
+  color: #000;
+  cursor: pointer;
+}
+
+.menu h2,
+.menu p:first-of-type {
+  text-align: center;
+  margin-bottom: 20px;
+}
+
+.menu a {
+  display: block;
+  margin-bottom: 10px;
+  color: black;
+  text-decoration: none;
+}
+
+.menu a:hover {
+  color: gray;
+}
+
+.menu button {
+  display: block;
+  margin-top: 20px;
+  width: 100%;
+}
