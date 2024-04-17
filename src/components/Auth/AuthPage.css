@@ -12,6 +12,8 @@
 
 .auth__image-section {
     flex: 1 1 auto;
+    background: url('http://localhost:2000/image/pexels-mo-eid-1268975-10771000.jpg');
+    background-size: cover;
 }
 
 .auth__image-section img {
@@ -26,7 +28,7 @@
     margin-left: auto;
     margin-right: auto;
     /*  max-width: 415px;*/
-    width: 350px;
+    width: 450px;
     padding: 3.5rem 2.75rem 4rem;
     text-align: center;
 }
