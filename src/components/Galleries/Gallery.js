@@ -9,7 +9,7 @@ const Gallery = () => {
   console.log('gallery')
   const refsPhotos = useRef();
   const title = useRef();
-  const [photoGrid, render, setPhotoGrid] = usePhotos();
+  const [photoGrid, render, setPhotoGrid, windowSize] = usePhotos();
 
   useEffect(() => {
     if (photoGrid.grid.length > 0) {
@@ -36,6 +36,7 @@ const Gallery = () => {
       <GalleryList
         photoGrid={photoGrid.grid}
         refsPhotos={refsPhotos}
+        windowSize={windowSize}
       />
     </>
   );

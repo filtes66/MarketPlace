@@ -1,27 +1,55 @@
-import { createSlice } from "@reduxjs/toolkit";
+import { createSlice, createAsyncThunk } from "@reduxjs/toolkit";
 import initialState, { sliceName } from "./constants";
-import thunk from "./thunk";
+import getPhotos from "../../../api/api";
+import { returnPhotosArrays } from "./returnPhotosArrays";
+
+export const fetchPhotos = createAsyncThunk("photos/fetchPhotos", async () => {
+  try {
+    const response = await getPhotos();
+    const responseCopy = JSON.parse(JSON.stringify(response));
+    console.log('responseCopy', responseCopy);
+    return responseCopy;
+  } catch (err) {
+    throw new Error(err);
+  }
+});
+
+export const gallerySlice = createSlice({
+  name: 'gallery',
+  initialState: initialState,
+  reducers: {
+    resizeGallery: (state, action) => {
+      state.items = returnPhotosArrays(action.payload.items, action.payload.windowSize);
+    }
+  },
+})
 
 export const photosSlice = createSlice({
   name: 'photos',
-  initialState,
+  initialState: {
+    isLoading: false,
+    items2: [],
+    error: null
+  },
   reducers: {},
   extraReducers: (builder) => {
-    builder.addCase(thunk.fetchPhotos.pending, (state, action) => {
+    builder.addCase(fetchPhotos.pending, (state, action) => {
       state.isLoading = true;
     });
-    builder.addCase(thunk.fetchPhotos.fulfilled, (state, action) => {
-      state.items = action.payload;
+    builder.addCase(fetchPhotos.fulfilled, (state, action) => {
+      state.items2 = action.payload;
       state.isLoading = false;
     });
-    builder.addCase(thunk.fetchPhotos.rejected, (state, action) => {
+    builder.addCase(fetchPhotos.rejected, (state, action) => {
       state.isLoading = false;
       state.error = action.payload;
     });
   },
 });
 
-// Action creators are generated for each case reducer function
-export const { } = photosSlice.actions;
 
-export default photosSlice.reducer;
+// Action creators are generated for each case reducer function
+export const { resizeGallery } = gallerySlice.actions;
+
+export const galleryReducer = gallerySlice.reducer;
+export const photoReducer = photosSlice.reducer;

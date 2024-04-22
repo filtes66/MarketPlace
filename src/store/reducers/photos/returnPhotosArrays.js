@@ -1,11 +1,14 @@
-const GRID_WIDTH = 1200;
+//const GRID_WIDTH = 1200;
 const HEIGHT_RATIO = 300;
 const WIDTH_LARGE = 552;
 const WIDTH_SMALL = 370;
-const WIDTH_RATIO_UPPER = 1.2;
-const WIDTH_RATIO_LOWER = 0.8;
+const WIDTH_RATIO_UPPER = 1.1;
+const WIDTH_RATIO_LOWER = 0.7;
 
-function returnPhotosArrays(photoItems) {
+function returnPhotosArrays(photoItems, windowSize) {
+    let photoItems2 = JSON.parse(JSON.stringify(photoItems));
+    console.log('photoItems, windowSize', photoItems, windowSize)
+    let GRID_WIDTH = windowSize;
     const districtsPhotos = [];
     const neighborhoodPhotos = [];
     const adminPhotos = [];
@@ -13,7 +16,7 @@ function returnPhotosArrays(photoItems) {
     let cond = true;
     for (let i = 1; i <= 20; i++) {
         let districtPhotos = [];
-        photoItems.forEach((item) => {
+        photoItems2.forEach((item) => {
             if (item.arrond === i) {
                 districtPhotos.push(item);
             }
@@ -27,20 +30,20 @@ function returnPhotosArrays(photoItems) {
         });
         cond = false;
         let districtPhotosCopy = JSON.parse(JSON.stringify(districtPhotos));
-        districtsPhotos.push(createPhotoGrid(districtPhotosCopy));
+        districtsPhotos.push(createPhotoGrid(districtPhotosCopy, GRID_WIDTH));
 
     }
     const photosObject = {
-        ParisPhotos: createPhotoGrid(JSON.parse(JSON.stringify(ParisPhotos))),
+        ParisPhotos: createPhotoGrid(JSON.parse(JSON.stringify(ParisPhotos)), GRID_WIDTH),
         districtsPhotos: districtsPhotos,
-        adminPhotos: createPhotoGrid(adminPhotos),
-        neighborhoodPhotos: createPhotoGrid(neighborhoodPhotos),
+        adminPhotos: createPhotoGrid(adminPhotos, GRID_WIDTH),
+        neighborhoodPhotos: createPhotoGrid(neighborhoodPhotos, GRID_WIDTH),
 
     };
     return photosObject
 }
 
-function createPhotoGrid(photoItems) {
+function createPhotoGrid(photoItems, GRID_WIDTH) {
     let currentRow = [];
     let allRows = [];
     let currentWidthSum = 0;
@@ -85,7 +88,8 @@ function createPhotoGrid(photoItems) {
     function handleOvershootRow(photoItem) {
         let poppedItem = currentRow.pop();
         photoItems.push(poppedItem);
-        //  photoItems.splice(i - 1, 1);
+        photoItems.splice(i - 1, 1);
+        console.log('photoItem', photoItem);
         currentWidthSum = currentWidthSum - photoItem.width;
         currentColumns -= 1;
         maxColumns = previousMaxColumns;
@@ -176,13 +180,14 @@ function createPhotoGrid(photoItems) {
             handleIdealWidth()
         }
         if (currentWidthSum > GRID_WIDTH * WIDTH_RATIO_UPPER) {
-            handleOvershootRow()
+            handleOvershootRow(photoItem)
         }
 
         if (currentWidthSum < GRID_WIDTH * WIDTH_RATIO_LOWER && i === photoItems.length - 1) {
             handleUnderflow();
         }
     }
+    console.log('allRows.flat', allRows.flat)
     return allRows.flat();
 }
 

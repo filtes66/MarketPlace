@@ -1,10 +1,12 @@
 import React from "react";
 import "./Photo.css";
 
-const GRID_WIDTH = 1200;
+//const GRID_WIDTH = 1200;
 const PADDING = 3;
 
-const Photo = ({ id, url, nom, prix, arrond, onClickPhoto, currentHeight, currentWidth }) => {
+const Photo = ({ id, url, nom, prix, arrond, onClickPhoto, currentHeight, currentWidth, windowSize }) => {
+  let GRID_WIDTH = windowSize;
+  // console.log('GRID_WIDTH', GRID_WIDTH)
   let adjustedHeight = (currentWidth === GRID_WIDTH)
     ? (currentHeight / GRID_WIDTH * (GRID_WIDTH - 2 * PADDING))
     : (currentHeight - 2 * PADDING);
