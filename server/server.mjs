@@ -12,7 +12,7 @@ const json = bodyParser.json;
 
 import cors from "cors";
 const app = express();
-app.use(express.static('../build'));
+app.use(express.static('../public'));
 
 const routes = Router();
 

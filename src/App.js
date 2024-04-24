@@ -1,5 +1,6 @@
-import React from "react";
+import React, { useEffect, useState } from "react";
 import { Routes, Route, BrowserRouter as Router, Navigate } from "react-router-dom";
+import { useDispatch } from "react-redux";
 import { Layout1, Layout2 } from "./components/Layout/Layout";
 import "./App.css";
 
@@ -9,6 +10,8 @@ import AuthPage from "./components/Auth/AuthPage";
 import Panier from "./components/Panier/Panier";
 import Success from "./components/Panier/Success";
 import Cancel from "./components/Panier/Cancel";
+import { fetchPhotos } from "./store/reducers/photos/slice";
+import { resizeGallery } from "./store/reducers/photos/slice";
 //import AchatPhoto from "./elements/AchatPhoto/AchatPhoto";
 
 function LayoutComponent({ component: Component, layout: Layout }) {
@@ -35,6 +38,20 @@ function AppRoutes() {
 }
 
 function App() {
+  const dispatch = useDispatch();
+  const [firstRender, setFirstRender] = useState(true);
+
+  useEffect(() => {
+    const fetchAndSetPhotos = async () => {
+      dispatch(fetchPhotos()).then(() => setFirstRender(false));
+      //  setFirstRender(false);
+    };
+
+    fetchAndSetPhotos();
+  }, [dispatch]);
+
+  if (firstRender) return null;
+
   return (
     <Router>
       <AppRoutes />

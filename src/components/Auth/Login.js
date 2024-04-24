@@ -55,9 +55,9 @@ const Login = () => {
   return (
     <div className="login__wrapper">
       <form className="login__form" onSubmit={handleOnSubmit}>
-        <h1>Login</h1>
-        <input type='email' name='email' value={email} label="Email" onChange={handleOnChange} className="login__input" />
-        <input type="password" name='password' value={password} label="Password" onChange={handleOnChange} className="login__input" />
+        <h1 className="login__title">Login</h1>
+        <input type='email' name='email' value={email} label="Email" placeholder="Adresse e-mail" onChange={handleOnChange} className="login__input" />
+        <input type="password" name='password' value={password} label="Password" placeholder="Mot de passe" onChange={handleOnChange} className="login__input" />
         <input type='submit' className="login__submit-button" disabled={!isValid} />
       </form>
       {loading && <p>Wrong authentication</p>}

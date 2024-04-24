@@ -1,19 +1,33 @@
 import { useRef, useState, useEffect } from "react";
 import { useSelector, useDispatch } from "react-redux";
-import thunk from "../../store/reducers/photos/thunk";
+import { resizeGallery } from "../../store/reducers/photos/slice";
 import { GALLERY_NAMES } from "./galleryNames";
 
 const usePhotos = () => {
     const refsPhotos = useRef();
     const title = useRef();
     const dispatch = useDispatch();
+    const { items2 } = useSelector((state) => state.photos2);
     const { items } = useSelector((state) => state.photos);
-    console.log('items ', items)
     const [photoGrid, setPhotoGrid] = useState({ grid: [], name: "Paris", render: false });
+    const [windowSize, setWindowSize] = useState(window.innerWidth);
+    const [firstRender, setFirstRender] = useState(true);
 
     useEffect(() => {
-        dispatch(thunk.fetchPhotos());
-    }, [dispatch]);
+        const handleResize = () => {
+            setWindowSize(window.innerWidth);
+        };
+        window.addEventListener('resize', handleResize);
+        return (() => window.removeEventListener('resize', handleResize));
+    }, []);
+
+    useEffect(() => {
+        const galleryResize = (items, windowSize) => {
+            dispatch(resizeGallery({ items: items, windowSize: windowSize }));
+        };
+        galleryResize(items2, windowSize);
+    }, [windowSize]);
+
 
     useEffect(() => {
         if (!!Object.keys(items).length && !photoGrid.loading) {
@@ -31,7 +45,7 @@ const usePhotos = () => {
         }
     }, [items, photoGrid.render, photoGrid.name]);
 
-    return [photoGrid, photoGrid.render, setPhotoGrid];
+    return [photoGrid, photoGrid.render, setPhotoGrid, windowSize];
 };
 
 export default usePhotos;

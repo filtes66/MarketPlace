@@ -2,6 +2,6 @@
   display: flex;
   flex-wrap: wrap;
   position: relative;
-  width: 1230px;
+  /* width: 1230px;*/
   /* gap: 6px;*/
 }
