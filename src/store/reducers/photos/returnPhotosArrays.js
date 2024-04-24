@@ -2,8 +2,8 @@
 const HEIGHT_RATIO = 300;
 const WIDTH_LARGE = 552;
 const WIDTH_SMALL = 370;
-const WIDTH_RATIO_UPPER = 1.1;
-const WIDTH_RATIO_LOWER = 0.7;
+const WIDTH_RATIO_UPPER = 1.2;
+const WIDTH_RATIO_LOWER = 0.8;
 
 function returnPhotosArrays(photoItems, windowSize) {
     let photoItems2 = JSON.parse(JSON.stringify(photoItems));
