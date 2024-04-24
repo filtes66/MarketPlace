@@ -55,7 +55,6 @@
 .panier-item__flex {
   display: flex;
   gap: 15px;
-  height: 150px;
   background-color: white;
   padding: 15px;
   border: 1px solid #a6a6a6;
@@ -64,7 +63,7 @@
 }
 
 .panier-item__photo {
-  height: 110px;
+  text-align: center;
   width: 170px;
 }
 

@@ -1,7 +1,7 @@
 import React from "react";
-import "./Photo.css";
 import { LazyLoadImage } from 'react-lazy-load-image-component';
 import 'react-lazy-load-image-component/src/effects/blur.css';
+import "./Photo.css";
 
 //const GRID_WIDTH = 1200;
 const PADDING = 3;

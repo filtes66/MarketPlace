@@ -10,7 +10,6 @@ import "./Panier.css";
 function Panier() {
   const dispatch = useDispatch();
   const { items, totalPrice, numberItems } = useSelector((state) => state.cart);
-
   const onTrashClick = (item) => dispatch(removeFromCart(item));
 
 
@@ -18,10 +17,15 @@ function Panier() {
   const licence = "libre de droits";
 
 
-  const Item = ({ url, nom, id, prix, arrond }) => (
+  const Item = ({ url, nom, id, prix, arrond, cartScaledHeight, cartScaledWidth }) => (
     <div className="panier-item__flex">
       <div className="panier-item__photo">
-        <PhotoRender url={url} arrond={arrond} currentHeight="110px" />
+        { /*    <PhotoRender url={url} arrond={arrond} currentHeight="110px" />*/}
+        <img className="photo__image"
+          src={`/image/${arrond}/${url}.jpg`}
+          height={cartScaledHeight}
+          width={cartScaledWidth}
+          alt={`Photo from ${arrond}`} />
       </div>
       <div className="panier-item__description">
         <div className="panier-item__nom-flex">
@@ -39,7 +43,7 @@ function Panier() {
       </div>
       <div className="panier-item__prix-flex">
         <div className="panier-item__trash" onClick={() => onTrashClick(id)}>
-          <FaTrash />
+          X
         </div>
         <div className="panier-item__price">{prix} €</div>
       </div>
@@ -47,8 +51,8 @@ function Panier() {
   );
 
   const ListeItems = ({ items }) => {
-    const listeItems = items.map(({ url, nom, id, prix, arrond }) => (
-      <Item key={id} url={url} nom={nom} id={id} prix={prix} arrond={arrond} />
+    const listeItems = items.map(({ url, nom, id, prix, arrond, cartScaledHeight, cartScaledWidth }) => (
+      <Item key={id} url={url} nom={nom} id={id} prix={prix} arrond={arrond} cartScaledHeight={{ cartScaledHeight }} cartScaledWidth={cartScaledWidth} />
     ));
     return <>{listeItems}</>;
   };

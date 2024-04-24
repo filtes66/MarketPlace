@@ -15,7 +15,7 @@ const radioStyles = {
 
 const PresentationItem = forwardRef(
   (
-    { id, description, url, nom, prix, arrond, scaledHeight, scaledWidth, totalHeight, onCloseCross },
+    { id, description, url, nom, prix, arrond, scaledHeight, scaledWidth, cartScaledHeight, cartScaledWidth, totalHeight, onCloseCross },
     ref
   ) => {
     const radios = [
@@ -42,7 +42,7 @@ const PresentationItem = forwardRef(
     function handleImageOption(selectedOption, actionType) {
       if (actionType === 2) {
         return dispatch(
-          addToCart({ id, description, url, nom, prix, arrond })
+          addToCart({ id, description, url, nom, prix, arrond, cartScaledHeight, cartScaledWidth })
         );
       } else if (actionType === 3) {
         return navigate("/panier");
