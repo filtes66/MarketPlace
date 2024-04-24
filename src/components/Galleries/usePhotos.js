@@ -1,6 +1,5 @@
 import { useRef, useState, useEffect } from "react";
 import { useSelector, useDispatch } from "react-redux";
-//import thunk from "../../store/reducers/photos/thunk";
 import { resizeGallery } from "../../store/reducers/photos/slice";
 import { GALLERY_NAMES } from "./galleryNames";
 
@@ -9,9 +8,7 @@ const usePhotos = () => {
     const title = useRef();
     const dispatch = useDispatch();
     const { items2 } = useSelector((state) => state.photos2);
-    console.log('items2 ', items2);
     const { items } = useSelector((state) => state.photos);
-    console.log('items ', items);
     const [photoGrid, setPhotoGrid] = useState({ grid: [], name: "Paris", render: false });
     const [windowSize, setWindowSize] = useState(window.innerWidth);
     const [firstRender, setFirstRender] = useState(true);
@@ -26,7 +23,6 @@ const usePhotos = () => {
 
     useEffect(() => {
         const galleryResize = (items, windowSize) => {
-            console.log('windowSize, items', windowSize, items);
             dispatch(resizeGallery({ items: items, windowSize: windowSize }));
         };
         galleryResize(items2, windowSize);
