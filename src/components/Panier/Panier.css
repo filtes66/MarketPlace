@@ -14,6 +14,23 @@
   margin-top: 15px;
 }
 
+/* CSS */
+.panier__Link {
+  display: inline-block;
+  margin: 20px 0;
+  padding: 10px 20px;
+  background-color: #6f43d6;
+  color: #fff;
+  text-decoration: none;
+  border-radius: 4px;
+  transition: background-color 0.3s ease;
+}
+
+.panier__Link:hover {
+  background-color: #5516e9;
+}
+
+
 /*
 .panier__button {
   background-color: #6f43d6;

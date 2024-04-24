@@ -1,4 +1,5 @@
 import React from "react";
+import { Link } from "react-router-dom";
 import { FaTrash } from "react-icons/fa";
 import { useSelector, useDispatch } from "react-redux";
 import PhotoRender from "../Galleries/Photo";
@@ -57,6 +58,7 @@ function Panier() {
   return (
     <div className="panier">
       <h1 className="panier__title">Panier d'achats</h1>
+      <Link to="/gallery" className="panier__Link">Back to Gallery</Link>
       <div className="panier__header-flex">
         <h2 className="panier__count-items">Articles sélectionnés pour l'achat : {numberItems}</h2>
         <div className="panier__header">
