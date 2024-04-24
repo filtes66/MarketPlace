@@ -1,5 +1,7 @@
 import React from "react";
 import "./Photo.css";
+import { LazyLoadImage } from 'react-lazy-load-image-component';
+import 'react-lazy-load-image-component/src/effects/blur.css';
 
 //const GRID_WIDTH = 1200;
 const PADDING = 3;
@@ -13,7 +15,7 @@ const Photo = ({ id, url, nom, prix, arrond, onClickPhoto, currentHeight, curren
 
   return (
     <div className="photo__container" style={{ height: `${currentHeight}px`, width: `${currentWidth}px` }}>
-      <img
+      <LazyLoadImage
         className="photo__image"
         src={`/image/${arrond}/${url}.jpg`}
         onClick={() => onClickPhoto(id)}
