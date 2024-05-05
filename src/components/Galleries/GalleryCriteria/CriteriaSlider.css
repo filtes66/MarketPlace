@@ -5,7 +5,6 @@
 
 .filter__wrapper {
   border-bottom: 10px;
-  width: 1190px;
   overflow: hidden;
 }
 
@@ -32,10 +31,10 @@
 
 .filter__next {
   position: absolute;
-  left: 1190px;
   height: 40px;
   border: 0;
   width: 30px;
+  right: 0;
   transition: all 0.3s ease;
 }
 

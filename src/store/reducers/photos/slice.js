@@ -20,6 +20,7 @@ export const gallerySlice = createSlice({
   reducers: {
     resizeGallery: (state, action) => {
       state.items = returnPhotosArrays(action.payload.items, action.payload.windowSize);
+      state.windowSize = action.payload.windowSize;
     }
   },
 })

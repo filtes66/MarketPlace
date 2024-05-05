@@ -4,7 +4,7 @@ import { FaChevronLeft, FaChevronRight } from 'react-icons/fa';
 import CriteriaItem from './CriteriaItem';
 import './CriteriaSlider.css';
 
-function CriteriaSlider({ criteria, nbCriteria, handleSelectGallery, handleSubCriteriaItem, nbSlides }) {
+function CriteriaSlider({ criteria, nbCriteria, handleSelectGallery, handleSubCriteriaItem, nbSlides, windowSize }) {
     const refSlider = useRef(null);
     const refRightButton = useRef(null);
     const refLeftButton = useRef(null);
@@ -23,7 +23,7 @@ function CriteriaSlider({ criteria, nbCriteria, handleSelectGallery, handleSubCr
     };
 
     return (
-        <>
+        <div style={{ left: `${windowSize - 30}px` }}>
             <div className="filter__subList">
                 <button
                     ref={refLeftButton}
@@ -64,7 +64,7 @@ function CriteriaSlider({ criteria, nbCriteria, handleSelectGallery, handleSubCr
                     <FaChevronRight />
                 </button>
             </div>
-        </>
+        </div>
     );
 }
 

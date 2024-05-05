@@ -1,7 +1,7 @@
 import React, { useState } from 'react';
 import CriteriaSlider from './CriteriaSlider';
 
-function GalleryCriteria({ criteria, handleSelectGallery }) {
+function GalleryCriteria({ criteria, handleSelectGallery, windowSize }) {
 
     const [criteriaItem, setCriteriaItem] = useState({
         isSubCriterSelected: false,
@@ -17,13 +17,14 @@ function GalleryCriteria({ criteria, handleSelectGallery }) {
     };
 
     return (
-        <>
+        <div style={{ width: `${windowSize}px` }}>
             <CriteriaSlider
                 handleSubCriteriaItem={handleSubCriteriaItem}
                 handleSelectGallery={handleSelectGallery}
                 criteria={criteria}
                 nbCriteria={criteria.length}
                 nbSlides={1}
+                windowSize={windowSize}
             />
             {criteriaItem.isSubCriterSelected && (
                 <CriteriaSlider
@@ -32,10 +33,11 @@ function GalleryCriteria({ criteria, handleSelectGallery }) {
                     criteria={criteriaItem.subCriteria}
                     nbCriteria={criteriaItem.subCriteria.length}
                     nbSlides={3}
+                    windowSize={windowSize}
                 />
             )
             }
-        </>
+        </div>
     );
 }
 

@@ -4,7 +4,6 @@ import PresentationItem from "./PresentationItem";
 import "./GalleryList.css";
 
 const GalleryList = ({ photoGrid, refsPhotos, windowSize }) => {
-  console.log("gallerylist createdphotogrid, windowSize", photoGrid, windowSize);
   const idPrev = useRef(0);
   const [checked, setChecked] = useState([]);
 
@@ -23,7 +22,7 @@ const GalleryList = ({ photoGrid, refsPhotos, windowSize }) => {
     setChecked(check);
   }
   return (
-    <div className="gallery__flex" style={{ width: `${windowSize}px` }}>
+    <div className="gallery__flex">
       {photoGrid.map((item, i) => (
         <div key={i}>
           <div

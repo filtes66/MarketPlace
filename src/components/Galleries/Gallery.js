@@ -28,7 +28,9 @@ const Gallery = () => {
   return (
     <>
       <div className="header__filters">
-        <GalleryCriteria criteria={criteria}
+        <GalleryCriteria
+          criteria={criteria}
+          windowSize={windowSize}
           handleSelectGallery={handleSelectGallery}
         />
       </div>

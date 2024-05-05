@@ -15,7 +15,8 @@ const usePhotos = () => {
 
     useEffect(() => {
         const handleResize = () => {
-            setWindowSize(window.innerWidth);
+            const mainContainerWidth = window.innerWidth * (1 - 5 / 100);
+            setWindowSize(mainContainerWidth);
         };
         window.addEventListener('resize', handleResize);
         return (() => window.removeEventListener('resize', handleResize));
@@ -27,7 +28,6 @@ const usePhotos = () => {
         };
         galleryResize(items2, windowSize);
     }, [windowSize]);
-
 
     useEffect(() => {
         if (!!Object.keys(items).length && !photoGrid.loading) {
