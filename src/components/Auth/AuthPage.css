@@ -12,7 +12,7 @@
 
 .auth__image-section {
     flex: 1 1 auto;
-    background: url('http://localhost:2000/image/_2f4bd0a5-f8d4-4593-a336-71f404ea454f.jpeg');
+    background: url('http://localhost:2000/image/auth_background.jpg');
     background-size: cover;
 }
 
