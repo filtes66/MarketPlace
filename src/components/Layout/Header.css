@@ -46,10 +46,7 @@
   font-size: 20px;
 }
 
-.header__nav__item .logo {
-  height: 50px;
-  width: 50px;
-}
+.header__nav__item .logo {}
 
 .menu .fa-times {
   position: absolute;

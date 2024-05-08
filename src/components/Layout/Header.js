@@ -2,7 +2,7 @@ import React, { useState } from "react";
 import { useSelector } from "react-redux";
 import { Link } from "react-router-dom";
 import { FaHome, FaImages, FaUser } from "react-icons/fa";
-import logo from '../../images/logo.jpeg';
+import logo from '../../images/logo.png';
 
 import Menu from "./Menu";
 import "./Header.css";
