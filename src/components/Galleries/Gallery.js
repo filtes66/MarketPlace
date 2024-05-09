@@ -7,13 +7,13 @@ import "./Gallery.css";
 
 const Gallery = () => {
   console.log('gallery')
-  const refsPhotos = useRef();
+  const photoRefs = useRef();
   const title = useRef();
   const [photoGrid, render, setPhotoGrid, windowSize] = usePhotos();
 
   useEffect(() => {
     if (photoGrid.grid.length > 0) {
-      refsPhotos.current = [...new Array(photoGrid.grid.length)].map(() => createRef());
+      photoRefs.current = [...new Array(photoGrid.grid.length)].map(() => createRef());
     }
   }, [photoGrid.grid]);
 
@@ -37,7 +37,7 @@ const Gallery = () => {
       <div className="gallery__title">{title.content}</div>
       <GalleryList
         photoGrid={photoGrid.grid}
-        refsPhotos={refsPhotos}
+        photoRefs={photoRefs}
         windowSize={windowSize}
       />
     </>

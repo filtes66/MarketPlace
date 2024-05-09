@@ -3,7 +3,7 @@ import Photo from "./Photo";
 import PresentationItem from "./PresentationItem";
 import "./GalleryList.css";
 
-const GalleryList = ({ photoGrid, refsPhotos, windowSize }) => {
+const GalleryList = ({ photoGrid, photoRefs, windowSize }) => {
   const idPrev = useRef(0);
   const [checked, setChecked] = useState([]);
 
@@ -23,24 +23,23 @@ const GalleryList = ({ photoGrid, refsPhotos, windowSize }) => {
   }
   return (
     <div className="gallery__flex">
-      {photoGrid.map((item, i) => (
-        <div key={i}>
-          <div
-            style={{
-              marginBottom:
-                checked[item.id] || false
-                  ? `${item.scaledHeight + 328}px`
-                  : "",
-              height: `${item.currentHeight}px`,
-            }}
-          >
-            <Photo {...item} windowSize={windowSize} onClickPhoto={() => handleClickPhoto(item.id, i)} />
-          </div>
-          {(checked[item.id] || false) && (
-            <PresentationItem {...item} ref={refsPhotos.current[i]} onCloseCross={handleClickCloseCross} />
-          )}
-        </div>
-      ))}
+      {photoGrid.map((item, i) => {
+        const style = {
+          marginBottom: checked[item.id] ? `${item.scaledHeight + 328}px` : "",
+          height: `${item.currentHeight}px`,
+        }
+        return (
+          <div key={i}>
+            <div
+              style={style}
+            >
+              <Photo {...item} windowSize={windowSize} onClickPhoto={() => handleClickPhoto(item.id, i)} />
+            </div>
+            {(checked[item.id]) && (
+              <PresentationItem {...item} ref={photoRefs.current[i]} onCloseCross={handleClickCloseCross} />
+            )}
+          </div>)
+      })}
     </div>
   );
 };

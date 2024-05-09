@@ -1,35 +1,34 @@
 import { createSlice, createAsyncThunk } from "@reduxjs/toolkit";
 import initialState, { sliceName } from "./constants";
-import getPhotos from "../../../api/api";
+import fetchPhotosFromAPI from "../../../api/api";
 import { returnPhotosArrays } from "./returnPhotosArrays";
 
 export const fetchPhotos = createAsyncThunk("photos/fetchPhotos", async () => {
   try {
-    const response = await getPhotos();
+    const response = await fetchPhotosFromAPI();
     const responseCopy = JSON.parse(JSON.stringify(response));
-    console.log('responseCopy', responseCopy);
     return responseCopy;
   } catch (err) {
     throw new Error(err);
   }
 });
 
-export const gallerySlice = createSlice({
+export const galleryDisplaySlice = createSlice({
   name: 'gallery',
   initialState: initialState,
   reducers: {
     resizeGallery: (state, action) => {
-      state.items = returnPhotosArrays(action.payload.items, action.payload.windowSize);
-      state.windowSize = action.payload.windowSize;
+      state.items = returnPhotosArrays(action.payload.items, action.payload.viewportWidth);
+      state.windowSize = action.payload.viewportWidth;
     }
   },
 })
 
-export const photosSlice = createSlice({
+export const photosDatabaseSlice = createSlice({
   name: 'photos',
   initialState: {
     isLoading: false,
-    items2: [],
+    items: [],
     error: null
   },
   reducers: {},
@@ -38,7 +37,7 @@ export const photosSlice = createSlice({
       state.isLoading = true;
     });
     builder.addCase(fetchPhotos.fulfilled, (state, action) => {
-      state.items2 = action.payload;
+      state.items = action.payload;
       state.isLoading = false;
     });
     builder.addCase(fetchPhotos.rejected, (state, action) => {
@@ -48,9 +47,8 @@ export const photosSlice = createSlice({
   },
 });
 
-
 // Action creators are generated for each case reducer function
-export const { resizeGallery } = gallerySlice.actions;
+export const { resizeGallery } = galleryDisplaySlice.actions;
 
-export const galleryReducer = gallerySlice.reducer;
-export const photoReducer = photosSlice.reducer;
+export const galleryDisplayReducer = galleryDisplaySlice.reducer;
+export const photosDatabaseReducer = photosDatabaseSlice.reducer;

@@ -5,7 +5,7 @@ import Header from "./Header";
 import "./Layout.css";
 
 function Layout1(props) {
-  const { windowSize } = useSelector((state) => state.photos);
+  const { windowSize } = useSelector((state) => state.galleryPhotos);
   console.log('windowSize', windowSize);
   return (
     <div className="layout">

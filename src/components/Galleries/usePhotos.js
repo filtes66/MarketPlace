@@ -4,48 +4,46 @@ import { resizeGallery } from "../../store/reducers/photos/slice";
 import { GALLERY_NAMES } from "./galleryNames";
 
 const usePhotos = () => {
-    const refsPhotos = useRef();
-    const title = useRef();
+    const galleryTitle = useRef();
     const dispatch = useDispatch();
-    const { items2 } = useSelector((state) => state.photos2);
-    const { items } = useSelector((state) => state.photos);
-    const [photoGrid, setPhotoGrid] = useState({ grid: [], name: "Paris", render: false });
-    const [windowSize, setWindowSize] = useState(window.innerWidth);
-    const [firstRender, setFirstRender] = useState(true);
+    const photosFromDatabase = useSelector((state) => state.photosDatabase.items);
+    const photosToDisplay = useSelector((state) => state.galleryPhotos.items)
+    const [currentPhotoGrid, setCurrentPhotoGrid] = useState({ grid: [], name: "Paris", render: false });
+    const [viewportWidth, setViewportWidth] = useState(window.innerWidth);
 
     useEffect(() => {
         const handleResize = () => {
             const mainContainerWidth = window.innerWidth * (1 - 5 / 100);
-            setWindowSize(mainContainerWidth);
+            setViewportWidth(mainContainerWidth);
         };
         window.addEventListener('resize', handleResize);
         return (() => window.removeEventListener('resize', handleResize));
     }, []);
 
     useEffect(() => {
-        const galleryResize = (items, windowSize) => {
-            dispatch(resizeGallery({ items: items, windowSize: windowSize }));
+        const galleryResize = (items, viewportWidth) => {
+            dispatch(resizeGallery({ items: items, viewportWidth: viewportWidth }));
         };
-        galleryResize(items2, windowSize);
-    }, [windowSize]);
+        galleryResize(photosFromDatabase, viewportWidth);
+    }, [viewportWidth]);
 
     useEffect(() => {
-        if (!!Object.keys(items).length && !photoGrid.loading) {
+        if (!!Object.keys(photosToDisplay).length && !currentPhotoGrid.loading) {
             const galleryGrids = {
-                [GALLERY_NAMES.PARIS]: { newGrid: items.ParisPhotos },
-                [GALLERY_NAMES.BUILDINGS]: { newGrid: items.adminPhotos },
-                [GALLERY_NAMES.NEIGHBORHOODS]: { newGrid: items.neighborhoodPhotos },
-                [GALLERY_NAMES.DISTRICTS]: { newGrid: items.districtsPhotos[0], photoGridName: 'du Ier arrondissement' },
-                [GALLERY_NAMES.FIRST]: { newGrid: items.districtsPhotos[0], photoGridName: 'du Ier arrondissement' },
-                [GALLERY_NAMES.SECOND]: { newGrid: items.districtsPhotos[1], photoGridName: 'du IIe arrondissement' },
+                [GALLERY_NAMES.PARIS]: { newGrid: photosToDisplay.ParisPhotos },
+                [GALLERY_NAMES.BUILDINGS]: { newGrid: photosToDisplay.adminPhotos },
+                [GALLERY_NAMES.NEIGHBORHOODS]: { newGrid: photosToDisplay.neighborhoodPhotos },
+                [GALLERY_NAMES.DISTRICTS]: { newGrid: photosToDisplay.districtsPhotos[0], currentPhotoGridName: 'du Ier arrondissement' },
+                [GALLERY_NAMES.FIRST]: { newGrid: photosToDisplay.districtsPhotos[0], currentPhotoGridName: 'du Ier arrondissement' },
+                [GALLERY_NAMES.SECOND]: { newGrid: photosToDisplay.districtsPhotos[1], currentPhotoGridName: 'du IIe arrondissement' },
             }
-            let newGrid = galleryGrids[photoGrid.name].newGrid;
-            let photoGridName = `de ${galleryGrids[photoGrid.name].photoGridName}`;
-            setPhotoGrid({ ...photoGrid, grid: newGrid, render: true });
+            let newGrid = galleryGrids[currentPhotoGrid.name].newGrid;
+            let currentPhotoGridName = `de ${galleryGrids[currentPhotoGrid.name].photoGridName}`;
+            setCurrentPhotoGrid({ ...currentPhotoGrid, grid: newGrid, render: true });
         }
-    }, [items, photoGrid.render, photoGrid.name]);
+    }, [photosToDisplay, currentPhotoGrid.render, currentPhotoGrid.name]);
 
-    return [photoGrid, photoGrid.render, setPhotoGrid, windowSize];
+    return [currentPhotoGrid, currentPhotoGrid.render, setCurrentPhotoGrid, viewportWidth];
 };
 
 export default usePhotos;

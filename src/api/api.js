@@ -2,7 +2,7 @@ import axios from "axios";
 import { loadStripe } from "@stripe/stripe-js";
 import { REACT_APP_BASE_URL } from '../config/environment';
 
-export default async function getPhotos() {
+export default async function fetchPhotosFromAPI() {
     try {
         const response = await fetch(`${REACT_APP_BASE_URL}/photos`);
         if (!response.ok) {
@@ -11,7 +11,7 @@ export default async function getPhotos() {
         const data = await response.json();
         return data;
     } catch (err) {
-        console.log("error getPhotos");
+        console.log("error fetchPhotosFromAPI");
         console.log(err);
     }
 }
