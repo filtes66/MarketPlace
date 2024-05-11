@@ -12,6 +12,8 @@ import Success from "./components/Panier/Success";
 import Cancel from "./components/Panier/Cancel";
 import { fetchPhotos } from "./store/reducers/photos/slice";
 
+import LoginPage from './LoginPage';
+
 function LayoutComponent({ component: Component, layout: Layout }) {
   return (
     <Layout>
@@ -22,17 +24,27 @@ function LayoutComponent({ component: Component, layout: Layout }) {
 
 function AppRoutes() {
   console.log("approutes");
-  return (
-    <Routes>
-      <Route exact path="/" element={<LayoutComponent component={LandingPage} layout={Layout2} />} />
-      <Route exact path="/gallery" element={<LayoutComponent component={Gallery} layout={Layout1} />} />
-      <Route exact path="/auth" element={<LayoutComponent component={AuthPage} layout={Layout2} />} />
-      <Route exact path="/panier" element={<LayoutComponent component={Panier} layout={Layout2} />} />
-      <Route exact path="/success" element={<LayoutComponent component={Success} layout={Layout2} />} />
-      <Route exact path="/cancel" element={<LayoutComponent component={Cancel} layout={Layout2} />} />
-      <Route exact path='*' element={<Navigate to='/' />} />
-    </Routes>
-  );
+
+  const [isLoggedIn, setIsLoggedIn] = useState(false);
+
+  const handleLogin = () => {
+    setIsLoggedIn(true);
+  };
+
+  {
+    return isLoggedIn ? (
+      <Routes>
+        <Route exact path="/" element={<LayoutComponent component={LandingPage} layout={Layout2} />} />
+        <Route exact path="/gallery" element={<LayoutComponent component={Gallery} layout={Layout1} />} />
+        <Route exact path="/auth" element={<LayoutComponent component={AuthPage} layout={Layout2} />} />
+        <Route exact path="/panier" element={<LayoutComponent component={Panier} layout={Layout2} />} />
+        <Route exact path="/success" element={<LayoutComponent component={Success} layout={Layout2} />} />
+        <Route exact path="/cancel" element={<LayoutComponent component={Cancel} layout={Layout2} />} />
+        <Route exact path='*' element={<Navigate to='/' />} />
+      </Routes>
+    ) :
+      <LoginPage onLogin={handleLogin} />
+  }
 }
 
 function App() {
