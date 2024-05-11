@@ -1,44 +1,87 @@
+.register__wrapper {
+  margin-bottom: 16px;
+  padding: 1.75rem 1rem;
+}
+
 .register__title {
-  margin: 0 0 10px 5px;
+  font-size: 24px;
+  font-weight: bold;
+  margin-bottom: 20px;
 }
 
-.register__form {
-  max-width: 500px;
-  margin: 0 auto;
-}
-
-.register__input {
-  display: block;
-  box-sizing: border-box;
-  width: 100%;
-  border-radius: 4px;
-  border: 1px solid #000;
-  padding: 10px 15px;
-  margin-bottom: 10px;
-  font-size: 14px;
+.register__label {
+  color: #080808;
+  display: inline-block;
+  font-family: Lato, sans-serif;
+  font-size: 0.66rem;
+  font-weight: 400;
+  margin-bottom: 0.3rem;
 }
 
 .register__name-inputs {
   display: flex;
-  gap: 10px;
+  gap: 20px;
+}
+
+.register__input {
+  color: #888;
+  border: 1px solid #aaa;
+  border-radius: 0;
+  font-size: 16px;
+  height: 56px;
+  padding: 16px;
+  width: 100%;
+  margin-bottom: 20px;
+  transition: color 0.3s ease, border-color 0.3s ease;
+}
+
+.register__input:hover {
+  color: #444;
+  border-color: #666;
 }
 
 .register__submit-button {
-  font-family: 'Roboto', sans-serif;
-  background: #007BFF;
-  color: white;
-  text-transform: uppercase;
+  background-color: #007BFF;
+  /*font-weight: bold;*/
+  font-size: 18px;
+  color: #fff;
+  font-family: "Open Sans", Arial, sans-serif;
+  padding: 7px;
+  text-align: center;
+  text-decoration: none;
+  border-radius: 4px;
   border: none;
-  margin-top: 40px;
-  padding: 20px;
-  font-size: 16px;
-  font-weight: 300;
-  letter-spacing: 2px;
-  transition: background 0.3s ease-in-out;
   cursor: pointer;
+  transition: background-color 0.3s ease, opacity 0.3s ease;
+  width: 100%;
+  height: 56px;
+}
+
+.register__submit-button:disabled {
+  background-color: #ccc;
+  cursor: not-allowed;
+}
+
+.register__submit-button:hover:not(:disabled) {
+  opacity: 0.8;
+}
+
+.register__message-error {
+  margin-top: 30px;
+  font-size: 20px;
+  color: #ff0000;
+  font-weight: bold;
+  border: 1px solid #ff0000;
+  padding: 10px;
   border-radius: 5px;
 }
 
-.register__submit-button:hover {
-  background: #0056b3;
+.register__message-success {
+  margin-top: 30px;
+  font-size: 20px;
+  color: #008000;
+  font-weight: bold;
+  border: 1px solid #008000;
+  padding: 10px;
+  border-radius: 5px;
 }

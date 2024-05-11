@@ -34,6 +34,7 @@ const Register = () => {
   }, [formValues]);
 
   const [loading, setLoading] = useState(false);
+  const [registrationSuccessful, setRegistrationSuccessful] = useState(false);
   const dispatch = useDispatch();
   const navigate = useNavigate();
   console.log('isvalid ', isValid);
@@ -41,56 +42,46 @@ const Register = () => {
   const handleOnSubmit = (e) => {
     e.preventDefault();
     console.log("onsubmit ")
-    setLoading(true);
+    setLoading(false);
 
     // Sanitize user input
-    /* const newUser = {
-       first: DOMPurify.sanitize(first),
-       last: DOMPurify.sanitize(last),
-       email: DOMPurify.sanitize(email),
-       // city: DOMPurify.sanitize(city),
-       password: DOMPurify.sanitize(password),
-       //  confirm_password: DOMPurify.sanitize(confirm_password),
-     };*/
-
     const newUser = {
-      first,
-      last,
-      email,
+      first: DOMPurify.sanitize(first),
+      last: DOMPurify.sanitize(last),
+      email: DOMPurify.sanitize(email),
       // city: DOMPurify.sanitize(city),
-      password,
+      password: DOMPurify.sanitize(password),
       //  confirm_password: DOMPurify.sanitize(confirm_password),
-    }
+    };
 
     console.log('newUser', newUser)
 
     dispatch(signup(newUser))
       .unwrap()
-      .then((currentUser) => {
-        console.log('currentUser ', currentUser);
-        currentUser && setTimeout(() => navigate('/'), 2000);
-        //   window.location.reload();
+      .then(() => {
+        setRegistrationSuccessful(true);
+        return;
       })
+      .then(() => setTimeout(() => navigate('/'), 3000))
+      //   window.location.reload();)
       .catch(() => {
-        setLoading(false);
+        setLoading(true);
       });
   };
 
   return (
     <div className="register__wrapper">
-      {/* feedback et message d'erreurs */}
       <form className="register__form" onSubmit={handleOnSubmit}>
-        <h1>Sign up</h1>
-        <div className="register__user-name">
-          <div className="register__name-inputs">
-            <input name='first' value={first} label="First Name" onChange={handleOnChange} className="register__input" />
-            <input name='last' value={last} label="Last Name" onChange={handleOnChange} className="register__input" />
-          </div>
-          <input name='email' value={email} label="Email" onChange={handleOnChange} className="register__input" />
-          <input type="password" name='password' value={password} label="Password" onChange={handleOnChange} className="register__input" />
-          <input type='submit' className="register__submit-button" /* disabled={!isValid}*/ />
+        <div className="register__name-inputs">
+          <input name='first' value={first} label="First Name" placeholder="First Name" onChange={handleOnChange} className="register__input" />
+          <input name='last' value={last} label="Last Name" placeholder="Last Name" onChange={handleOnChange} className="register__input" />
         </div>
+        <input name='email' value={email} label="Email" placeholder="Adresse e-mail" onChange={handleOnChange} className="register__input" />
+        <input type="password" name='password' value={password} label="Password" placeholder="Mot de passe" onChange={handleOnChange} className="register__input" />
+        <input type='submit' className="register__submit-button" disabled={!isValid} />
       </form>
+      {loading && <p className="register__message-error">Mauvaise authentication</p>}
+      {registrationSuccessful && <p className="register__message-success">Connection réussie, vous allez être redirigé vers la page d'accueil !</p>}
     </div >
   );
 };

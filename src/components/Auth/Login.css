@@ -7,7 +7,6 @@
   font-size: 24px;
   font-weight: bold;
   margin-bottom: 20px;
-  /* Increased space below the title */
 }
 
 .login__label {
@@ -21,25 +20,19 @@
 
 .login__input {
   color: #888;
-  /* Lighter text color */
   border: 1px solid #aaa;
-  /* Lighter border color */
   border-radius: 0;
   font-size: 16px;
   height: 56px;
   padding: 16px;
   width: 100%;
   margin-bottom: 20px;
-  /* Increased space between inputs */
   transition: color 0.3s ease, border-color 0.3s ease;
-  /* Smooth color transition */
 }
 
 .login__input:hover {
   color: #444;
-  /* Darker text color on hover */
   border-color: #666;
-  /* Darker border color on hover */
 }
 
 .login__submit-button {
@@ -66,4 +59,24 @@
 
 .login__submit-button:hover:not(:disabled) {
   opacity: 0.8;
+}
+
+.login__message-error {
+  margin-top: 30px;
+  font-size: 20px;
+  color: #ff0000;
+  font-weight: bold;
+  border: 1px solid #ff0000;
+  padding: 10px;
+  border-radius: 5px;
+}
+
+.login__message-success {
+  margin-top: 30px;
+  font-size: 20px;
+  color: #008000;
+  font-weight: bold;
+  border: 1px solid #008000;
+  padding: 10px;
+  border-radius: 5px;
 }

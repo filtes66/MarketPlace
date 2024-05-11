@@ -19,6 +19,7 @@ const Login = () => {
   const { email, password } = formValues["login"] ?? {};
   console.log('email, password ', email, password)
   const [loading, setLoading] = useState(false);
+  const [loginSuccessful, setLoginSuccessful] = useState(false);
   const dispatch = useDispatch();
   const navigate = useNavigate();
 
@@ -42,10 +43,14 @@ const Login = () => {
     console.log('{ email: sanitizedEmail, password: sanitizedPassword }', { email: sanitizedEmail, password: sanitizedPassword })
     dispatch(login({ email: sanitizedEmail, password: sanitizedPassword }))
       .unwrap()
-      .then((currentUser) => {
-        currentUser && setTimeout(() => navigate('/'), 2000);
-        //   window.location.reload();
+      .then(() => {
+        setLoginSuccessful(true);
       })
+      .then(() =>
+        setTimeout(() => {
+          navigate('/')
+          //   window.location.reload()
+        }, 3000))
       .catch(() => {
         console.log('wrong authentication')
         setLoading(true);
@@ -55,12 +60,12 @@ const Login = () => {
   return (
     <div className="login__wrapper">
       <form className="login__form" onSubmit={handleOnSubmit}>
-        <h1 className="login__title">Login</h1>
         <input type='email' name='email' value={email} label="Email" placeholder="Adresse e-mail" onChange={handleOnChange} className="login__input" />
         <input type="password" name='password' value={password} label="Password" placeholder="Mot de passe" onChange={handleOnChange} className="login__input" />
         <input type='submit' className="login__submit-button" disabled={!isValid} />
       </form>
-      {loading && <p>Wrong authentication</p>}
+      {loading && <p className="login__message-error">Mauvaise authentication</p>}
+      {loginSuccessful && <p className="register__message-success">Connection réussie, vous allez être redirigé vers la page d'accueil !</p>}
     </div>
   );
 };
