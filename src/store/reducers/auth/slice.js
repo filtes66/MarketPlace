@@ -22,7 +22,7 @@ export const signup = createAsyncThunk(
             const user = await app.logIn(credentials)
             await addUser(userProfile);
             console.log('user ', user);
-            return user;
+            return userProfile;
         } catch (err) {
             return thunkAPI.rejectWithValue(err.message);
         }
@@ -65,8 +65,8 @@ const authSlice = createSlice({
     extraReducers: (builder) => {
         builder
             .addCase(signup.fulfilled, (state, action) => {
-                state.isLoggedIn = action.payload.isLoggedIn;
-                state.user = action.payload.response;
+                state.isLoggedIn = true;
+                state.user = action.payload;
             })
             .addCase(signup.rejected, (state, action) => {
                 state.isLoggedIn = false;
