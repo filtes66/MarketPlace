@@ -5,13 +5,11 @@
     width: 300px;
     height: 100vh;
     background-color: #f8f9fa;
-    /* Lighter background color for a modern look */
     padding: 20px;
     box-sizing: border-box;
     overflow-y: auto;
     z-index: 2;
     transition: transform 0.3s ease-in-out;
-    /* Add transition for smoother menu movement */
 }
 
 .menu .fa-times {
@@ -21,7 +19,6 @@
     color: #000;
     cursor: pointer;
     font-size: 24px;
-    /* Larger close icon */
 }
 
 .menu h2,
@@ -29,24 +26,19 @@
     text-align: center;
     margin-bottom: 20px;
     color: #333;
-    /* Darker text color for better readability */
     font-family: 'Arial', sans-serif;
-    /* Use a more readable font */
 }
 
 .menu a {
     display: block;
     margin-bottom: 10px;
     color: #007bff;
-    /* Use a different color for links */
     text-decoration: none;
     font-weight: bold;
-    /* Make links bold */
 }
 
 .menu a:hover {
     color: #0056b3;
-    /* Darker color on hover */
 }
 
 .menu button {
@@ -54,22 +46,14 @@
     margin-top: 20px;
     width: 100%;
     background-color: #007bff;
-    /* Blue background color for the button */
     color: #fff;
-    /* White text color for the button */
     border: none;
-    /* Remove border */
     padding: 10px;
-    /* Add some padding */
     border-radius: 5px;
-    /* Rounded corners */
     cursor: pointer;
-    /* Pointer cursor on hover */
     transition: background-color 0.3s ease;
-    /* Transition for hover effect */
 }
 
 .menu button:hover {
     background-color: #0056b3;
-    /* Darker blue color on hover */
 }
