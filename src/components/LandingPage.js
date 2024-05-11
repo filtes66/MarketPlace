@@ -6,8 +6,8 @@ const LandingPage = () => {
     const navigate = useNavigate();
     return (
         <div className="landing-page">
-            <h1>Welcome to Paris Photo Marketplace!</h1>
-            <p>Discover beautiful, rights-free photos from the city of love.</p>
+            <h1>Bienvenue sur Paris Photo Marketplace !</h1>
+            <p>Découvrez de belles photos, libres de droits</p>
             <button onClick={() => navigate('/gallery')}>Explore Gallery</button>
         </div>
     );
