@@ -11,8 +11,6 @@ import Panier from "./components/Panier/Panier";
 import Success from "./components/Panier/Success";
 import Cancel from "./components/Panier/Cancel";
 import { fetchPhotos } from "./store/reducers/photos/slice";
-import { resizeGallery } from "./store/reducers/photos/slice";
-//import AchatPhoto from "./elements/AchatPhoto/AchatPhoto";
 
 function LayoutComponent({ component: Component, layout: Layout }) {
   return (
