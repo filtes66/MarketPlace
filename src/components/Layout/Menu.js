@@ -1,8 +1,9 @@
 import React, { useRef, useEffect } from 'react';
 import { useDispatch } from 'react-redux';
-import { Link } from 'react-router-dom';
 import { logout } from '../../store/reducers/auth/slice';
 import { FaTimes } from 'react-icons/fa';
+
+import "./Menu.css"
 
 const Menu = ({ user, toggleMenu, isOpen }) => {
     const menuRef = useRef();
@@ -26,9 +27,6 @@ const Menu = ({ user, toggleMenu, isOpen }) => {
             <FaTimes className="menu__fa-times" onClick={toggleMenu} />
             <h2>Votre compte</h2>
             <p>{user.firstname}.{user.lastname}</p>
-            <ul>
-                <li><Link to="/overview">SESSIONS</Link></li>
-            </ul>
             <button onClick={userLogout}>FERMER LA SESSION</button>
         </div>
     )
