@@ -17,7 +17,6 @@ const Login = () => {
     useFormValidation({ formName: "login", defaultValues: defaultValues });
 
   const { email, password } = formValues["login"] ?? {};
-  console.log('email, password ', email, password)
   const [loading, setLoading] = useState(false);
   const [loginSuccessful, setLoginSuccessful] = useState(false);
   const dispatch = useDispatch();
@@ -40,7 +39,6 @@ const Login = () => {
     const sanitizedEmail = DOMPurify.sanitize(email);
     const sanitizedPassword = DOMPurify.sanitize(password);
 
-    console.log('{ email: sanitizedEmail, password: sanitizedPassword }', { email: sanitizedEmail, password: sanitizedPassword })
     dispatch(login({ email: sanitizedEmail, password: sanitizedPassword }))
       .unwrap()
       .then(() => {

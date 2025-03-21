@@ -6,8 +6,6 @@ import { signup } from "../../store/reducers/auth/slice";
 import { useFormValidation } from "../../hooks/useFormValidation";
 import "./Register.css";
 
-console.log("register");
-
 const defaultValues = {
   first: "philippe",
   last: "last",
@@ -37,7 +35,6 @@ const Register = () => {
   const [registrationSuccessful, setRegistrationSuccessful] = useState(false);
   const dispatch = useDispatch();
   const navigate = useNavigate();
-  console.log('isvalid ', isValid);
 
   const handleOnSubmit = (e) => {
     e.preventDefault();

@@ -6,7 +6,6 @@ import criteria from "./criteria";
 import "./Gallery.css";
 
 const Gallery = () => {
-  console.log('gallery')
   const photoRefs = useRef();
   const title = useRef();
   const [photoGrid, render, setPhotoGrid, windowSize] = usePhotos();

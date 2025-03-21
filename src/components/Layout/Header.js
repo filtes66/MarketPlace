@@ -14,7 +14,6 @@ function Header() {
   const toggleMenu = () => {
     setIsMenuOpen(!isMenuOpen);
   };
-  console.log("isMenuOpen user", isMenuOpen, user);
 
   return (
     <>

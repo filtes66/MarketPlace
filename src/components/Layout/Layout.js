@@ -6,7 +6,6 @@ import "./Layout.css";
 
 function Layout1(props) {
   const { windowSize } = useSelector((state) => state.galleryPhotos);
-  console.log('windowSize', windowSize);
   return (
     <div className="layout">
       <Header />

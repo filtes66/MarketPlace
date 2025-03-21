@@ -9,7 +9,6 @@ function RadioGroup(props) {
     x: 1,
   });
   const nbClickBut = useRef(1);
-  console.log("props RadioGroup", props);
 
   function selectOption(e) {
     setSelectedOption(e.target.value);

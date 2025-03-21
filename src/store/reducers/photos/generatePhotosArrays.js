@@ -16,6 +16,11 @@ function generatePhotosArrays(photoItems, windowSize) {
     const neighborhoodPhotos = [];
     const adminPhotos = [];
     const ParisPhotos = [];
+    const eiffelTowerPhotos = [];
+    const louvrePhotos = [];
+    const montmartrePhotos = [];
+    const arcDeTriomphePhotos = [];
+    const museeOrsayPhotos = [];
     let isFirstIteration = true;
 
     for (let i = 1; i <= DISTRICT_COUNT; i++) {
@@ -30,7 +35,22 @@ function generatePhotosArrays(photoItems, windowSize) {
             if (item.bat && isFirstIteration) {
                 adminPhotos.push(item);
             }
-            isFirstIteration && ParisPhotos.push(item);
+            if (item.tour_eiffel && isFirstIteration) {
+                eiffelTowerPhotos.push(item);
+            }
+            if (item.louvre && isFirstIteration) {
+                louvrePhotos.push(item);
+            }
+            if (item.montmartre && isFirstIteration) {
+                montmartrePhotos.push(item);
+            }
+            if (item.Arc_de_Triomphe && isFirstIteration) {
+                arcDeTriomphePhotos.push(item);
+            }
+            if (item.Arc_de_Triomphe && isFirstIteration) {
+                arcDeTriomphePhotos.push(item);
+            }
+            isFirstIteration && museeOrsayPhotos.push(item);
         });
         isFirstIteration = false;
         let districtPhotosCopy = JSON.parse(JSON.stringify(districtPhotos));
@@ -42,6 +62,7 @@ function generatePhotosArrays(photoItems, windowSize) {
         districtsPhotos: districtsPhotos,
         adminPhotos: createPhotoGrid(adminPhotos, GRID_WIDTH),
         neighborhoodPhotos: createPhotoGrid(neighborhoodPhotos, GRID_WIDTH),
+        eiffelTowerPhotos: createPhotoGrid(eiffelTowerPhotos, GRID_WIDTH),
     };
 
     return photosObject;

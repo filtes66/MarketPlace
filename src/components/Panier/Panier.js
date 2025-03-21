@@ -57,8 +57,6 @@ function Panier() {
     return <>{listeItems}</>;
   };
 
-  console.log("ITEMS", items);
-
   return (
     <div className="panier">
       <h1 className="panier__title">Panier d'achats</h1>

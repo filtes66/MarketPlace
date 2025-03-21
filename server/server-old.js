@@ -36,7 +36,7 @@ routes.use(cors(corsOptions));
 
 // mongoDB client
 import { MongoClient } from "mongodb";
-import { config } from '../constants/environment.mjs';
+//import { config } from '../constants/environment.mjs';
 
 //const { URI_DB, SECRET_KEY } = config;
 
@@ -48,9 +48,17 @@ const client = new MongoClient(process.env.URI_DB, {
 });
 
 // connect to server
-app.listen(2000, () => {
-  console.log(`Server up and running on ${YOUR_DOMAIN}`);
-});
+// Vérifiez si PhusionPassenger est défini
+if (typeof (PhusionPassenger) !== 'undefined') {
+  app.listen('passenger', function () {
+    console.log("Server running with Phusion Passenger");
+  });
+} else {
+  // Si PhusionPassenger n'est pas disponible, utilisez le port par défaut
+  app.listen(2000, () => {
+    console.log(`Server up and running on localhost`);
+  });
+};
 
 // connect to DB
 const DATABASE = "marketplace";

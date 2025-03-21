@@ -6,7 +6,6 @@ import { app } from "../../../api/realm";
 export const signup = createAsyncThunk(
     'user/registration',
     async (newUser, thunkAPI) => {
-        console.log('newuser', newUser);
         const userProfile = {
             ...newUser,
             password: undefined,
@@ -18,10 +17,8 @@ export const signup = createAsyncThunk(
                 newUser.email,
                 newUser.password
             );
-            console.log('credential ', credentials);
             const user = await app.logIn(credentials)
             await addUser(userProfile);
-            console.log('user ', user);
             return userProfile;
         } catch (err) {
             return thunkAPI.rejectWithValue(err.message);
@@ -37,7 +34,6 @@ export const login = createAsyncThunk(
             const currentUser = await app.currentUser;
             // retrieve user profile
             const userProfile = await getUser(currentUser);
-            console.log('userprofile', userProfile);
             return userProfile;
         } catch (err) {
             return thunkAPI.rejectWithValue(err.message);

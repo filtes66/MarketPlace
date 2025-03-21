@@ -5,9 +5,6 @@ import Register from './Register';
 import './AuthPage.css';
 
 const AuthPage = ({ status }) => {
-    console.log("authpage", status)
-    // const location = useLocation();
-    //  const fromHome = location.state?.from === 'Home';
     const [isLogin, setIsLogin] = useState(true);
 
     return (

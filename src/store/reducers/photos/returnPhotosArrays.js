@@ -36,6 +36,14 @@ function returnPhotosArrays(photoItems, windowSize) {
     const neighborhoodPhotos = [];
     const adminPhotos = [];
     const ParisPhotos = [];
+    const tourEiffelPhotos = [];
+    const louvrePhotos = [];
+    const arcDeTriomphePhotos = [];
+    const champsElyseesPhotos = [];
+    const montmartrePhotos = [];
+    const pontNeufPhotos = [];
+    const centrePompidouPhotos = [];
+    const museeOrsayPhotos = [];
     let isFirstIteration = true;
 
     for (let i = 1; i <= DISTRICT_COUNT; i++) {
@@ -50,6 +58,30 @@ function returnPhotosArrays(photoItems, windowSize) {
             if (item.bat && isFirstIteration) {
                 adminPhotos.push(item);
             }
+            if (item.tour_eiffel && isFirstIteration) {
+                tourEiffelPhotos.push(item);
+            }
+            if (item.Louvre && isFirstIteration) {
+                louvrePhotos.push(item);
+            }
+            if (item.Arc_de_Triomphe && isFirstIteration) {
+                arcDeTriomphePhotos.push(item);
+            }
+            if (item.Champs_Elysees && isFirstIteration) {
+                champsElyseesPhotos.push(item);
+            }
+            if (item.montmartre && isFirstIteration) {
+                montmartrePhotos.push(item);
+            }
+            if (item.Pont_Neuf && isFirstIteration) {
+                pontNeufPhotos.push(item);
+            }
+            if (item.Centre_Pompidou && isFirstIteration) {
+                centrePompidouPhotos.push(item);
+            }
+            if (item.Musee_d_Orsay && isFirstIteration) {
+                museeOrsayPhotos.push(item);
+            }
             isFirstIteration && ParisPhotos.push(item);
         });
         isFirstIteration = false;
@@ -62,6 +94,14 @@ function returnPhotosArrays(photoItems, windowSize) {
         districtsPhotos: districtsPhotos,
         adminPhotos: createPhotoGrid(adminPhotos, GRID_WIDTH),
         neighborhoodPhotos: createPhotoGrid(neighborhoodPhotos, GRID_WIDTH),
+        tourEiffelPhotos: createPhotoGrid(tourEiffelPhotos, GRID_WIDTH),
+        louvrePhotos: createPhotoGrid(louvrePhotos, GRID_WIDTH),
+        champsElyseesPhotos: createPhotoGrid(champsElyseesPhotos, GRID_WIDTH),
+        montmartrePhotos: createPhotoGrid(montmartrePhotos, GRID_WIDTH),
+        arcDeTriomphePhotos: createPhotoGrid(arcDeTriomphePhotos, GRID_WIDTH),
+        pontNeufPhotos: createPhotoGrid(pontNeufPhotos, GRID_WIDTH),
+        centrePompidouPhotos: createPhotoGrid(centrePompidouPhotos, GRID_WIDTH),
+        museeOrsayPhotos: createPhotoGrid(museeOrsayPhotos, GRID_WIDTH),
     };
 
     return photosObject;
@@ -182,7 +222,7 @@ function createPhotoGrid(photoItems, GRID_WIDTH) {
             calculateScaledSizes(item);
 
             // Calculate smaller scaled sizes for the shopping cart page
-            calculateScaledSizes(item);
+            //calculateScaledSizes(item);
 
             return {
                 ...item,
@@ -232,6 +272,10 @@ function createPhotoGrid(photoItems, GRID_WIDTH) {
         if (currentWidthSum < GRID_WIDTH * WIDTH_RATIO_LOWER && i === photoItems.length - 1) {
             handleUnderflow();
         }
+    }
+    // Vérifie si des photos restent dans currentRow après la boucle
+    if (currentRow.length > 0) {
+        handleUnderflow();
     }
     console.log('allRows.flat', allRows.flat)
     return allRows.flat();

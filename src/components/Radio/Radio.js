@@ -2,7 +2,6 @@ import React from "react";
 import "./Radio.css";
 
 function Radio({ text, radio, selectOption, selectedOption }) {
-  console.log("selectedoption", selectedOption, "radiovalue", radio.value);
   return (
     <div className="radio" style={radio.style}>
       <div className="radio__radio-button">

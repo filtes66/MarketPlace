@@ -6,6 +6,7 @@ import { returnPhotosArrays } from "./returnPhotosArrays";
 export const fetchPhotos = createAsyncThunk("photos/fetchPhotos", async () => {
   try {
     const response = await fetchPhotosFromAPI();
+    console.log('response ', response);
     const responseCopy = JSON.parse(JSON.stringify(response));
     return responseCopy;
   } catch (err) {
