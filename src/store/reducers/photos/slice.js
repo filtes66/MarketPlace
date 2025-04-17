@@ -1,5 +1,5 @@
 import { createSlice, createAsyncThunk } from "@reduxjs/toolkit";
-import initialState, { sliceName } from "./constants";
+import initialState from "./constants";
 import fetchPhotosFromAPI from "../../../api/api";
 import { returnPhotosArrays } from "./returnPhotosArrays";
 

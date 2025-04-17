@@ -8,26 +8,6 @@ const WIDTH_RATIO_UPPER = 1.2;
 const WIDTH_RATIO_LOWER = 0.8;
 const DISTRICT_COUNT = 20;
 
-// Helper function to calculate scaled sizes
-/*function calculateScaledSizes(item, largeWidth, smallWidth) {
-    let scaledWidth;
-    let scaledHeight;
-    let cartScaledWidth;
-    let cartScaledHeight;
-    if (item.width > item.height) {
-        scaledHeight = (HEIGHT_RATIO * largeWidth) / item.width;
-        scaledWidth = largeWidth;
-        cartScaledWidth = smallWidth;
-        cartScaledHeight = (HEIGHT_RATIO * smallWidth) / item.width;
-    } else {
-        scaledHeight = (HEIGHT_RATIO * smallWidth) / item.width;
-        scaledWidth = smallWidth;
-        cartScaledHeight = HEIGHT_RATIO;
-        cartScaledWidth = (HEIGHT_RATIO * smallWidth) / item.height;
-    }
-    return { scaledWidth, scaledHeight, cartScaledWidth, cartScaledHeight };
-}*/
-
 // Main function
 function returnPhotosArrays(photoItems, windowSize) {
     let photoItemsCopy = JSON.parse(JSON.stringify(photoItems));
