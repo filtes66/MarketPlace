@@ -29,25 +29,31 @@ const useSliderLogic = (refRightButton, refLeftButton, refsItems, criteria) => {
 
     const nextTranslationSlider = (nbSlides) => {
         // Next criteria item belongs to the criteria list - Next and Previous item caculated
-        if (coordCriteria.current.length - indexNext.current - nbSlides >= 0) {
-            isTranslateActive.current = true;
-            isActivePrev.current = true;
-            indexNext.current += nbSlides;
-            indexPrev.current += nbSlides;
-            // Next criteria item outside the criteria list - Next and Previous item caculated
-        } else if (isActiveNext.current) {
-            indexPrev.current = indexPrev.current + coordCriteria.current.length - indexNext.current;
-            indexNext.current = coordCriteria.current.length;
-            isActiveNext.current = false;
+        const updateNextIndex = (nbSlides) => {
+            if (coordCriteria.current.length - indexNext.current - nbSlides >= 0) {
+                isTranslateActive.current = true;
+                isActivePrev.current = true;
+                indexNext.current += nbSlides;
+                indexPrev.current += nbSlides;
+                // Next criteria item outside the criteria list - Next and Previous item caculated
+            } else if (isActiveNext.current) {
+                indexPrev.current = indexPrev.current + coordCriteria.current.length - indexNext.current;
+                indexNext.current = coordCriteria.current.length;
+                isActiveNext.current = false;
+            }
         }
         // Slider translatation value calculated
-        if (isTranslateActive.current) {
-            const delta =
-                coordCriteria.current[indexNext.current - 1].right - coordRightButton.current.left;
+        const calculateNextTranslation = () => {
+            if (isTranslateActive.current) {
+                const delta =
+                    coordCriteria.current[indexNext.current - 1].right - coordRightButton.current.left;
 
-            if (indexNext.current === coordCriteria.current.length) { isTranslateActive.current = false }
-            return -delta;
+                if (indexNext.current === coordCriteria.current.length) { isTranslateActive.current = false }
+                return -delta;
+            }
         }
+        updateNextIndex(nbSlides);
+        return calculateNextTranslation();
     }
 
     const prevTranslationSlider = (nbSlides) => {
