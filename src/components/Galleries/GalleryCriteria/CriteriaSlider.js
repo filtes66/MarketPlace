@@ -45,11 +45,11 @@ function CriteriaSlider({ criteria, nbCriteria, handleSelectGallery, handleSubCr
                             <CriteriaItem
                                 key={i}
                                 ref={refsItems.current[i]}
-                                item={item.name}
+                                item={item.nameCriteria}
                                 handleItem={
                                     item.subCriteria
                                         ? () => handleSubCriteriaItem(true, item.subCriteria)
-                                        : () => handleSelectGallery(item.name)
+                                        : () => handleSelectGallery(item.nameGallery)
                                 }
                             />
                         ))}
